@@ -1,0 +1,12 @@
+.nav-link li a {
+  padding: 12px 8px;
+  font-size: 22px;
+  color: #fff;
+}
+.nav-link li a:hover {
+  background: none !important;
+}
+
+.flex-1 #tsparticles canvas {
+  position: relative !important;
+}
