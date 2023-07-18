@@ -23,7 +23,7 @@ const Header = () => {
             <Link to="/resume">
               <AiOutlineSetting />
             </Link>
-            <Link to="/">
+            <Link to="/portfolio">
               <BsEye />
             </Link>
             <Link to="/">

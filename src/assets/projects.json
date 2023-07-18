@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "name": "Drag and Drop Todo app",
+    "tech": "React, Typescript",
+    "img": "https://bslthemes.com/html/patrick/images/works/work1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Drag and Not Drop Todo app",
+    "tech": "React, Typescript",
+    "img": "https://bslthemes.com/html/patrick/images/works/work2.jpg"
+  },
+
+  {
+    "id": 2,
+    "name": "Drag and Not Drop Todo app",
+    "tech": "React, Typescript",
+    "img": "https://bslthemes.com/html/patrick/images/works/work2.jpg"
+  }
+]
