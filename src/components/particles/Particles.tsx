@@ -49,7 +49,7 @@ const Particles = () => {
               mode: "push",
             },
             onHover: {
-              enable: true,
+              enable: false,
               mode: "repulse",
             },
             resize: true,
@@ -59,7 +59,7 @@ const Particles = () => {
               quantity: 4,
             },
             repulse: {
-              distance: 200,
+              distance: 400,
               duration: 0.4,
             },
           },
@@ -76,33 +76,33 @@ const Particles = () => {
             width: 1,
           },
           move: {
-            direction: "none",
+            direction: "left",
             enable: true,
             outModes: {
               default: "bounce",
             },
             random: false,
-            speed: 6,
+            speed: 2,
             straight: false,
           },
           number: {
             density: {
               enable: true,
-              area: 800,
+              area: 900,
             },
             value: 80,
           },
           opacity: {
-            value: 0.5,
+            value: 1,
           },
           shape: {
-            type: "circle",
+            type: "triangle",
           },
           size: {
             value: { min: 1, max: 2 },
           },
           width: {
-            value: 100,
+            value: 0,
           },
         },
         detectRetina: true,

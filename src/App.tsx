@@ -1,9 +1,17 @@
-import Header from "./components/Header/Header";
+import { Route, Routes } from "react-router-dom";
+
+import Main from "./layout/Main";
+import { About, Home } from "./pages";
 
 const App: React.FC = () => {
   return (
     <>
-      <Header />
+      <Routes>
+        <Route path="/" element={<Main />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Route>
+      </Routes>
     </>
   );
 };
