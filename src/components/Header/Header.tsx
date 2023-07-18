@@ -20,7 +20,7 @@ const Header = () => {
             <Link to="/about">
               <GoPerson />
             </Link>
-            <Link to="/">
+            <Link to="/resume">
               <AiOutlineSetting />
             </Link>
             <Link to="/">

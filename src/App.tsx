@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 
 import Main from "./layout/Main";
-import { About, Home } from "./pages";
+import { About, Home, Resume } from "./pages";
 
 const App: React.FC = () => {
   return (
@@ -10,6 +10,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Main />}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/resume" element={<Resume />} />
         </Route>
       </Routes>
     </>
