@@ -34,6 +34,13 @@ const Particles = () => {
             value: "#000",
           },
         },
+        style: {
+          position: "relative",
+          height: "100vh",
+          width: "100%",
+          zIndex: "0",
+          opacity: ".5",
+        },
         fpsLimit: 120,
         interactivity: {
           events: {

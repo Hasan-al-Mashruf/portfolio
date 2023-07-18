@@ -31,8 +31,7 @@ const Header: React.FC = () => {
           </ul>
         </div>
       </div>
-      <div className="flex-1 bg-red-600">
-        <h2>Partiles is not showing</h2>
+      <div className="flex-1 relative myParticles">
         <Particles />
       </div>
     </div>

@@ -7,6 +7,9 @@
   background: none !important;
 }
 
-.flex-1 #tsparticles canvas {
-  position: relative !important;
+.myParticles {
+  background: url("https://i.ibb.co/HKQXB7V/javier-miranda-Oii-Vv1ii-B0-A-unsplash.jpg")
+    no-repeat;
+  background-size: cover;
+  background-position: 0px -75px;
 }
