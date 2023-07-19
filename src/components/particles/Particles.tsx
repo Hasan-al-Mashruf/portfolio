@@ -39,7 +39,7 @@ const Particles = () => {
           height: "100vh",
           width: "100%",
           zIndex: "0",
-          opacity: ".5",
+          opacity: ".6",
         },
         fpsLimit: 120,
         interactivity: {
