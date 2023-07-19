@@ -10,6 +10,7 @@ interface ProjectsT {
 }
 
 const Portfolio: React.FC = () => {
+  const [active, setActive] = useState("all");
   const [projects, setProjects] = useState<ProjectsT[]>([]);
   const categories: string[] = ["All", "Photo", "Video", "Music", "anc"];
 
@@ -18,20 +19,34 @@ const Portfolio: React.FC = () => {
   }, []);
   return (
     <div>
-      <div className="grid grid-cols-2 ">
-        <div className="about-section text-white h-screen py-10 relative p-5 overflow-scroll">
-          <div className="absolute top-5 w-full left-0">
-            <h1 className=" text-[130px] text-[#3d3d3d3b] uppercase font-bold text-center">
+      <div className="grid grid-cols-3 ">
+        <div className="about-section text-white h-screen py-10 relative pt-20 overflow-y-scroll p-5 col-span-2">
+          <div className="absolute top-3 w-full left-0">
+            <h1 className=" text-[90px] text-[#3d3d3d3b] uppercase font-bold text-center">
               Portfolio
             </h1>
           </div>
-          <div className="content pt-36 grid grid-cols-2 gap-14">
-            <h2>My portfolio</h2>
+          <div className="content pt-36 grid grid-cols-2 gap-10 items-center">
+            <h2 className="font-semibold text-[20px] ">
+              My <span>portfolio</span>
+            </h2>
             <div>
               <ul className="flex justify-end">
                 {categories.map((category, index) => (
-                  <li key={index} className="mr-3 px-5">
-                    {category}
+                  <li
+                    key={index}
+                    className={`mr-3 px-5 cursor-pointer font-semibold text-[16px] pr-0 pl-6 ${
+                      active.toLowerCase() === category.toLowerCase()
+                        ? "active"
+                        : ""
+                    }`}
+                    onClick={() => setActive(category)}
+                  >
+                    {active.toLowerCase() === category.toLowerCase() ? (
+                      <span>{category}</span>
+                    ) : (
+                      category
+                    )}
                   </li>
                 ))}
               </ul>
