@@ -1,0 +1,27 @@
+.card-image {
+  transition: all 1.2s linear 0.1s;
+}
+.card:hover .card-image {
+  top: -500px;
+}
+.card-image img {
+  transition: all 0.8s linear 0.1s;
+}
+.card:hover .card-image img {
+  transform: scale(1.2);
+}
+.card:hover::after {
+  top: 0;
+  height: 100%;
+}
+.card::after {
+  position: absolute;
+  content: "";
+  top: 96%;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background: linear-gradient(to right, #00ffcc, #ff6600);
+  opacity: 0.8;
+  transition: all 0.3s linear 1s;
+}

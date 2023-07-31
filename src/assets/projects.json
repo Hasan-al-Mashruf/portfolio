@@ -3,19 +3,43 @@
     "id": 1,
     "name": "Drag and Drop Todo app",
     "tech": "React, Typescript",
-    "img": "https://bslthemes.com/html/patrick/images/works/work1.jpg"
+    "img": "https://i.ibb.co/M8tkWPr/screencapture-wonderful-cheesecake-95bf0f-netlify-app-2023-07-31-15-43-20.png",
+    "category": "html templates"
   },
   {
     "id": 2,
     "name": "Drag and Not Drop Todo app",
     "tech": "React, Typescript",
-    "img": "https://bslthemes.com/html/patrick/images/works/work2.jpg"
+    "img": "https://i.ibb.co/Nj12h0s/screencapture-lustrous-gnome-ba3ab4-netlify-app-2023-07-31-15-48-58.png",
+    "category": "html templates"
   },
 
   {
-    "id": 2,
+    "id": 3,
     "name": "Drag and Not Drop Todo app",
     "tech": "React, Typescript",
-    "img": "https://bslthemes.com/html/patrick/images/works/work2.jpg"
+    "img": "https://i.ibb.co/BtPMKDz/screencapture-layerdrops-ogenix-main-html-index-one-page-html-2023-07-31-15-50-48.png",
+    "category": "html templates"
+  },
+  {
+    "id": 4,
+    "name": "Drag and Not Drop Todo app",
+    "tech": "React, Typescript",
+    "img": "https://i.ibb.co/k8LG4Rx/screencapture-sylheteyehospital-2023-07-31-15-54-26.png",
+    "category": "html templates"
+  },
+  {
+    "id": 5,
+    "name": "Drag and Not Drop Todo app",
+    "tech": "React, Typescript",
+    "img": "https://i.ibb.co/6vKk9ZJ/screencapture-noorjahanindianrestaurants-2023-07-31-15-53-08.png",
+    "category": "wordpress"
+  },
+  {
+    "id": 6,
+    "name": "Drag and Not Drop Todo app",
+    "tech": "React, Typescript",
+    "img": "https://i.ibb.co/RCbwpfC/screencapture-commengine-xyz-2023-07-31-15-59-29.png",
+    "category": "wordpress"
   }
 ]

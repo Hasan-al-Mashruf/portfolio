@@ -1,22 +1,46 @@
 import { useState, useEffect } from "react";
 import projectsData from "../../assets/projects.json";
-
+import "./Portfolio.css";
 interface ProjectsT {
   id: number;
   name: string;
   img: string;
   tech: string;
   completed?: boolean;
+  category: string;
 }
 
 const Portfolio: React.FC = () => {
-  const [active, setActive] = useState("all");
+  const [active, setActive] = useState("All");
   const [projects, setProjects] = useState<ProjectsT[]>([]);
-  const categories: string[] = ["All", "Photo", "Video", "Music", "anc"];
+  const allProjects = projectsData;
+  const categories: string[] = [
+    "All",
+    "Html Templates",
+    "Wordpress",
+    "React",
+    "Mern stack",
+  ];
+
+  const categorySort = (category: string) => {
+    setActive(category);
+  };
 
   useEffect(() => {
-    setProjects(projectsData);
+    setProjects(allProjects);
   }, []);
+
+  useEffect(() => {
+    if (active === "All") {
+      setProjects(allProjects);
+    } else {
+      const updateSorting = allProjects.filter(
+        (project) => project.category.toLowerCase() === active.toLowerCase()
+      );
+      setProjects(updateSorting);
+    }
+  }, [active]);
+
   return (
     <div>
       <div className="grid grid-cols-3 ">
@@ -26,11 +50,11 @@ const Portfolio: React.FC = () => {
               Portfolio
             </h1>
           </div>
-          <div className="content pt-36 grid grid-cols-2 gap-10 items-center">
+          <div className="content pt-36 grid grid-cols-4 gap-10 items-center">
             <h2 className="font-semibold text-[20px] ">
               My <span>portfolio</span>
             </h2>
-            <div>
+            <div className="col-span-3">
               <ul className="flex justify-end">
                 {categories.map((category, index) => (
                   <li
@@ -40,7 +64,7 @@ const Portfolio: React.FC = () => {
                         ? "active"
                         : ""
                     }`}
-                    onClick={() => setActive(category)}
+                    onClick={() => categorySort(category)}
                   >
                     {active.toLowerCase() === category.toLowerCase() ? (
                       <span>{category}</span>
@@ -52,11 +76,11 @@ const Portfolio: React.FC = () => {
               </ul>
             </div>
           </div>
-          <div className="main-content grid grid-cols-2 gap-14 mt-10">
+          <div className="main-content grid grid-cols-3 gap-14 mt-10">
             {projects.map((project, index) => (
               <div key={index}>
-                <div className="card bg-base-100 shadow-xl">
-                  <figure>
+                <div className="card bg-base-100 shadow-xl h-[360px] relative overflow-hidden">
+                  <figure className="absolute top-0 left-0 right-0 p-4 card-image">
                     <img src={project.img} alt="Shoes" />
                   </figure>
                   <div className="card-body text-black">
