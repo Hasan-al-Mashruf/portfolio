@@ -3,7 +3,6 @@ import { GoHome } from "react-icons/go";
 import { GoPerson } from "react-icons/go";
 import { AiOutlineSetting } from "react-icons/ai";
 import { BsEye } from "react-icons/bs";
-import { BiLogoBlogger } from "react-icons/bi";
 import { TiContacts } from "react-icons/Ti";
 import {
   BiLogoFacebook,
@@ -39,9 +38,6 @@ const Header = () => {
               </NavLink>
               <NavLink to="/portfolio">
                 <BsEye />
-              </NavLink>
-              <NavLink to="/blog">
-                <BiLogoBlogger />
               </NavLink>
               <NavLink to="/contact">
                 <TiContacts />
