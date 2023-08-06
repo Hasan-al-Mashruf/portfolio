@@ -9,6 +9,25 @@
   box-sizing: border-box;
 }
 
+span {
+  background: linear-gradient(to right, #00ffcc, #ff6600);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #00ffcc86, #ff66008c);
+  border-radius: 10px;
+}
+
 /* a {
   font-weight: 500;
   color: #646cff;
