@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import projectsData from "../../assets/projects.json";
 import "./Portfolio.css";
+import { Particles } from "../../components";
 interface ProjectsT {
   id: number;
   name: string;
@@ -14,6 +15,7 @@ const Portfolio: React.FC = () => {
   const [active, setActive] = useState("All");
   const [projects, setProjects] = useState<ProjectsT[]>([]);
   const allProjects = projectsData;
+
   const categories: string[] = [
     "All",
     "Html Templates",
@@ -91,7 +93,9 @@ const Portfolio: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="bg-red-900 col-span-2"></div>
+        <div className="bg-red-900">
+          <Particles />
+        </div>
       </div>
     </div>
   );

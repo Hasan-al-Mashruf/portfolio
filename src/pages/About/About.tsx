@@ -7,6 +7,7 @@ import {
   reactLogo,
   wordpressLogo,
 } from "../../assets";
+import { Particles } from "../../components";
 
 const About: React.FC = () => {
   return (
@@ -95,6 +96,9 @@ const About: React.FC = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="bg-red-400">
+        <Particles />
       </div>
     </div>
   );

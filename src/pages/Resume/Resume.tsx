@@ -1,3 +1,5 @@
+import { Particles } from "../../components";
+
 const Resume: React.FC = () => {
   return (
     <div>
@@ -88,7 +90,9 @@ const Resume: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="bg-red-900 col-span-2"></div>
+        <div className="bg-red-900">
+          <Particles />
+        </div>
       </div>
     </div>
   );
