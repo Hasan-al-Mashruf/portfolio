@@ -1,5 +1,5 @@
 import { Particles } from "../../components";
-
+import "./Resume.css";
 const Resume: React.FC = () => {
   return (
     <div>
@@ -19,7 +19,7 @@ const Resume: React.FC = () => {
             </h3>
 
             <div className="bg-gray-600 rounded-2xl shadow-xl">
-              <div className="pb-10 border-b border-r-slate-700 p-8 min-h-[236px]">
+              <div className="pb-10 border-b border-b-slate-700 p-8 min-h-[236px]">
                 <h4 className="text-[16px]">
                   Front-end Developer - React, Angular
                 </h4>
@@ -31,7 +31,7 @@ const Resume: React.FC = () => {
                   execution of ideas.
                 </p>
               </div>
-              <div className="pb-10 border-b border-r-slate-700 p-8 min-h-[236px]">
+              <div className="pb-10 border-b border-b-slate-700 p-8 min-h-[236px]">
                 <h4 className="text-[16px]">
                   Front-end Developer - Bootstrap, Javascript, Wordpress
                 </h4>
@@ -55,7 +55,7 @@ const Resume: React.FC = () => {
               </div>
             </div>
             <div className="bg-gray-600 rounded-2xl shadow-xl">
-              <div className="pb-10 border-b border-r-slate-700 p-8 min-h-[236px]">
+              <div className="pb-10 border-b border-b-slate-700 p-8 min-h-[236px]">
                 <h4 className="text-[16px]">National University</h4>
                 <small className="text-[12px] opacity-50">
                   2019-23 | Graduated.
@@ -65,7 +65,7 @@ const Resume: React.FC = () => {
                   execution of ideas.
                 </p>
               </div>
-              <div className="pb-10 border-b border-r-slate-700 p-8 min-h-[236px]">
+              <div className="pb-10 border-b border-b-slate-700 p-8 min-h-[236px]">
                 <h4 className="text-[16px]">
                   Front-end Developer - Bootstrap, Javascript, Wordpress
                 </h4>
@@ -86,6 +86,64 @@ const Resume: React.FC = () => {
                   Collaborate with creative and development teams on the
                   execution of ideas.
                 </p>
+              </div>
+            </div>
+            <h3 className="text-2xl font-semibold">
+              Personal <span> Skills</span>
+            </h3>
+            <h3 className="text-2xl font-semibold">
+              Professional <span> Skills</span>
+            </h3>
+            <div className="bg-gray-600 rounded-2xl shadow-xl">
+              <div className="border-b border-b-slate-700 p-6">
+                <h4 className="text-sm">Communication</h4>
+                <div className="w-full h-[6px] bg-gray-500 mt-1 relative">
+                  <div className="w-[90%]  absolute top-0 left-0 h-full skills-line"></div>
+                </div>
+              </div>
+              <div className="border-b border-b-slate-700 p-6">
+                <h4 className="text-sm">Team Work</h4>
+                <div className="w-full h-[6px] bg-gray-500 mt-1 relative">
+                  <div className="w-[80%]  absolute top-0 left-0 h-full skills-line"></div>
+                </div>
+              </div>
+              <div className="border-b border-b-slate-700 p-6">
+                <h4 className="text-sm">Leadership</h4>
+                <div className="w-full h-[6px] bg-gray-500 mt-1 relative">
+                  <div className="w-[50%]  absolute top-0 left-0 h-full skills-line"></div>
+                </div>
+              </div>
+              <div className="border-b border-b-slate-700 p-6">
+                <h4 className="text-sm">Language</h4>
+                <div className="w-full h-[6px] bg-gray-500 mt-1 relative">
+                  <div className="w-[70%]  absolute top-0 left-0 h-full skills-line"></div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gray-600 rounded-2xl shadow-xl">
+              <div className="border-b border-b-slate-700 p-6">
+                <h4 className="text-sm">Javascript/React</h4>
+                <div className="w-full h-[6px] bg-gray-500 mt-1 relative">
+                  <div className="w-[90%]  absolute top-0 left-0 h-full skills-line"></div>
+                </div>
+              </div>
+              <div className="border-b border-b-slate-700 p-6">
+                <h4 className="text-sm">Wordpress</h4>
+                <div className="w-full h-[6px] bg-gray-500 mt-1 relative">
+                  <div className="w-[80%]  absolute top-0 left-0 h-full skills-line"></div>
+                </div>
+              </div>
+              <div className="border-b border-b-slate-700 p-6">
+                <h4 className="text-sm">Html/css/bootstrap</h4>
+                <div className="w-full h-[6px] bg-gray-500 mt-1 relative">
+                  <div className="w-[100%]  absolute top-0 left-0 h-full skills-line"></div>
+                </div>
+              </div>
+              <div className="border-b border-b-slate-700 p-6">
+                <h4 className="text-sm">Mern stack</h4>
+                <div className="w-full h-[6px] bg-gray-500 mt-1 relative">
+                  <div className="w-[70%]  absolute top-0 left-0 h-full skills-line"></div>
+                </div>
               </div>
             </div>
           </div>
