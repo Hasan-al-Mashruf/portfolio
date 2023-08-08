@@ -10,7 +10,7 @@ const Resume: React.FC = () => {
               Resume
             </h1>
           </div>
-          <div className="content pt-36 grid grid-cols-2 gap-14">
+          <div className="content pt-32 grid grid-cols-2 gap-14">
             <h3 className="text-2xl font-semibold">
               My <span> Experiences</span>
             </h3>
@@ -21,36 +21,38 @@ const Resume: React.FC = () => {
             <div className="bg-gray-600 rounded-2xl shadow-xl">
               <div className="pb-10 border-b border-b-slate-700 p-8 min-h-[236px]">
                 <h4 className="text-[16px]">
-                  Front-end Developer - React, Angular
+                  Front-end Developer - React, Wordpress, Shopify
                 </h4>
                 <small className="text-[12px] opacity-50">
-                  2013-Present | Facebook Inc.
+                  2023-Present | Xpertsolvers.
                 </small>
                 <p className="mt-5 text-sm leading-6 text-[14px]">
-                  Collaborate with creative and development teams on the
-                  execution of ideas.
+                  Skilled in WordPress Elementor, Shopify, React, and Firebase.
+                  Created user-friendly websites, collaborating on new features
+                  and issue resolution for top performance.
                 </p>
               </div>
               <div className="pb-10 border-b border-b-slate-700 p-8 min-h-[236px]">
                 <h4 className="text-[16px]">
-                  Front-end Developer - Bootstrap, Javascript, Wordpress
+                  Front-end Developer - html/Bootstrap, Jquery animation
                 </h4>
                 <small className="text-[12px] opacity-50">
-                  2013-Present | Facebook Inc.
+                  2023 | Webermelon.
                 </small>
                 <p className="mt-5 text-sm leading-6 text-[14px]">
-                  Collaborate with creative and development teams on the
-                  execution of ideas.
+                  I crafted responsive HTML templates using Bootstrap,
+                  JavaScript, and jQuery, collaborating closely with designers
+                  for modern UI. Expert in custom WordPress themes, optimizing
+                  performance, and issue resolution.
                 </p>
               </div>
               <div className="pb-10 p-8">
-                <h4 className="text-[16px]">Web Design - Wordpress, Shopify</h4>
+                <h4 className="text-[16px]">Web Design - Wordpress</h4>
                 <small className="text-[12px] opacity-50">
-                  2013-Present | Facebook Inc.
+                  2019-Present | Freelancing.
                 </small>
                 <p className="mt-5 text-sm leading-6 text-[14px]">
-                  Collaborate with creative and development teams on the
-                  execution of ideas.
+                  I have Been working as a freelnacer since my web journey.
                 </p>
               </div>
             </div>
@@ -61,30 +63,36 @@ const Resume: React.FC = () => {
                   2019-23 | Graduated.
                 </small>
                 <p className="mt-5 text-sm leading-6 text-[14px]">
-                  Collaborate with creative and development teams on the
-                  execution of ideas.
+                  I have graduated with Bachelor of Social Science. My major
+                  includes Social science, Economics, Psychology, Civics
                 </p>
               </div>
               <div className="pb-10 border-b border-b-slate-700 p-8 min-h-[236px]">
                 <h4 className="text-[16px]">
-                  Front-end Developer - Bootstrap, Javascript, Wordpress
+                  Web design and Develop - Wordpress and PHP
                 </h4>
                 <small className="text-[12px] opacity-50">
-                  2013-Present | Facebook Inc.
+                  2021 | Sikhbe Sobai Bangladesh.
                 </small>
                 <p className="mt-5 text-sm leading-6 text-[14px]">
-                  Collaborate with creative and development teams on the
-                  execution of ideas.
+                  Within 8 months journey, I have learnt and transformed my
+                  proficiency in HTML, CSS, Bootstrap, WordPress, and basic PHP
+                  into a fulfilling journey of freelancing expertise.
                 </p>
               </div>
               <div className="pb-10 p-8">
-                <h4 className="text-[16px]">Web Design - Wordpress, Shopify</h4>
+                <h4 className="text-[16px]">
+                  Mern stack - React, Node, Firebase
+                </h4>
                 <small className="text-[12px] opacity-50">
-                  2013-Present | Facebook Inc.
+                  2022 | Programming Hero.
                 </small>
                 <p className="mt-5 text-sm leading-6 text-[14px]">
-                  Collaborate with creative and development teams on the
-                  execution of ideas.
+                  I've excelled with over ten projects, mastering the MERN
+                  stack. Proficient in MongoDB, Express, React, and Node.js,
+                  I've honed my skills in dynamic full-stack web development,
+                  highlighting my dedication and expertise in crafting dynamic
+                  applications.
                 </p>
               </div>
             </div>
