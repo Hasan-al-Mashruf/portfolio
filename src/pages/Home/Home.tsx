@@ -6,8 +6,8 @@ const Home: React.FC = () => {
   return (
     <div className="myParticles">
       <Particles />
-      <div className="content absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 text-center">
-        <h1 className="text-6xl text-white">
+      <div className="content absolute md:left-1/2 top-1/2 -translate-y-1/2 md:-translate-x-1/2 text-center w-full">
+        <h1 className="md:text-6xl text-xl text-white">
           <span>Moeenuddin</span> Ahmad
         </h1>
         <h2 className="text-2xl text-white mt-1 opacity-75">

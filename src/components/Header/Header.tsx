@@ -15,7 +15,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <div>
-      <div className="navbar bg-black h-screen flex-col justify-between items-start p-0 w-12 border-r border-r-[#00fff735] ">
+      <div className="navbar bg-black lg:h-screen h-full flex-col justify-between items-start p-0 w-12 border-r border-r-[#00fff735] ">
         <div className="logo bg-[#0a8580] w-full flex justify-center">
           <h4 className="text-center text-4xl leading-[65px] text-white ">M</h4>
         </div>
