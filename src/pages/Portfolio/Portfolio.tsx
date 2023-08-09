@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import projectsData from "../../assets/projects.json";
 import "./Portfolio.css";
 import { Particles } from "../../components";
+import { AiOutlineLink } from "react-icons/ai";
+import { Link } from "react-router-dom";
 interface ProjectsT {
   id: number;
   name: string;
@@ -9,6 +11,7 @@ interface ProjectsT {
   tech: string;
   completed?: boolean;
   category: string;
+  link: string;
 }
 
 const Portfolio: React.FC = () => {
@@ -57,11 +60,11 @@ const Portfolio: React.FC = () => {
               My <span>portfolio</span>
             </h2>
             <div className="md:col-span-3">
-              <ul className="flex md:justify-end md:flex-unwrap flex-wrap">
+              <ul className="flex md:justify-end flex-wrap">
                 {categories.map((category, index) => (
                   <li
                     key={index}
-                    className={`md:mr-3 mr-6 md:px-5 cursor-pointer font-semibold md:text-[16px] text-[14px] leading-7 pr-0 md:pl-6 ${
+                    className={`md:mr-1 mr-6 cursor-pointer font-semibold md:text-[16px] text-[14px] leading-7 md:pl-8 ${
                       active.toLowerCase() === category.toLowerCase()
                         ? "active"
                         : ""
@@ -80,16 +83,16 @@ const Portfolio: React.FC = () => {
           </div>
           <div className="main-content grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-14 mt-10">
             {projects.map((project, index) => (
-              <div key={index}>
-                <div className="card bg-base-100 shadow-xl h-[360px] relative overflow-hidden">
-                  <figure className="absolute top-0 left-0 right-0 p-4 card-image">
-                    <img src={project.img} alt="Shoes" />
-                  </figure>
-                  <div className="card-body text-black">
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+              <Link to={project.link} target="blank">
+                <div key={index}>
+                  <div className="card bg-base-100 shadow-xl h-[360px] relative overflow-hidden">
+                    <figure className="absolute top-0 left-0 right-0 p-4 card-image">
+                      <img src={project.img} alt="Shoes" />
+                    </figure>
+                    <AiOutlineLink className="absolute left-1/2 -translate-x-1/2 z-50 text-3xl icon" />
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

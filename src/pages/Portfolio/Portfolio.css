@@ -1,15 +1,10 @@
 .card-image {
-  transition: all 1.2s linear 0.1s;
+  transition: all 0.9s linear 0.1s;
 }
 .card:hover .card-image {
-  top: -500px;
+  top: -400px;
 }
-.card-image img {
-  transition: all 0.8s linear 0.1s;
-}
-.card:hover .card-image img {
-  transform: scale(1.2);
-}
+
 .card:hover::after {
   top: 0;
   height: 100%;
@@ -23,10 +18,20 @@
   height: 10%;
   background: linear-gradient(to right, #00ffcc, #ff6600);
   opacity: 0.8;
-  transition: all 0.3s linear 1s;
+  transition: all 0.3s linear 0.7s;
 }
 .active {
   background: linear-gradient(to right, #00ffcc, #ff6600);
   background-clip: text;
   color: transparent;
+}
+.card:hover .icon {
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.8;
+}
+.icon {
+  top: 100%;
+  opacity: 0;
+  transition: all 0.2s linear 0.9s;
 }
