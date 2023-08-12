@@ -8,14 +8,14 @@ import "./Contact.css";
 const Contact: React.FC = () => {
   return (
     <div>
-      <div className="grid grid-cols-2">
+      <div className="grid lg:grid-cols-2 grid-cols-1">
         <div className="about-section text-white h-screen py-10 relative pt-20 overflow-y-scroll p-5">
           <div className="absolute top-3 w-full left-0">
-            <h1 className=" text-[90px] text-[#3d3d3d3b] uppercase font-bold text-center">
+            <h1 className=" md:text-[90px] text-[60px] text-[#3d3d3d3b] uppercase font-bold text-center">
               Contact
             </h1>
           </div>
-          <div className="content pt-36 grid grid-cols-2 gap-6">
+          <div className="content pt-36 grid md:grid-cols-2 grid-cols-1 gap-6">
             <h3 className="text-2xl font-semibold mb-5">
               Get <span> in Touch</span>
             </h3>
@@ -71,7 +71,7 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          <div className="content pt-36 mt-5">
+          <div className="content md:pt-36 pt-24 mt-5">
             <h3 className="text-2xl font-semibold mb-5">
               Contact <span> form</span>
             </h3>

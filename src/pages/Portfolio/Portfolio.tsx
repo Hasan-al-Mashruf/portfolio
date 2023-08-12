@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import projectsData from "../../assets/projects.json";
 import "./Portfolio.css";
 import { Particles } from "../../components";
+import { AiOutlineLink } from "react-icons/ai";
+import { Link } from "react-router-dom";
 interface ProjectsT {
   id: number;
   name: string;
@@ -9,6 +11,7 @@ interface ProjectsT {
   tech: string;
   completed?: boolean;
   category: string;
+  link: string;
 }
 
 const Portfolio: React.FC = () => {
@@ -45,23 +48,23 @@ const Portfolio: React.FC = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-3 ">
-        <div className="about-section text-white h-screen py-10 relative pt-20 overflow-y-scroll p-5 col-span-2">
+      <div className="grid lg:grid-cols-3 grid-col-1">
+        <div className="about-section text-white h-screen py-10 relative pt-20 overflow-y-scroll p-5 lg:col-span-2">
           <div className="absolute top-3 w-full left-0">
-            <h1 className=" text-[90px] text-[#3d3d3d3b] uppercase font-bold text-center">
+            <h1 className=" md:text-[90px] text-[56px] text-[#3d3d3d3b] uppercase font-bold text-center">
               Portfolio
             </h1>
           </div>
-          <div className="content pt-36 grid grid-cols-4 gap-10 items-center">
+          <div className="content pt-36 grid md:grid-cols-4 grid-cols-1 gap-10 items-center">
             <h2 className="font-semibold text-[20px] ">
               My <span>portfolio</span>
             </h2>
-            <div className="col-span-3">
-              <ul className="flex justify-end">
+            <div className="md:col-span-3">
+              <ul className="flex md:justify-end flex-wrap">
                 {categories.map((category, index) => (
                   <li
                     key={index}
-                    className={`mr-3 px-5 cursor-pointer font-semibold text-[16px] pr-0 pl-6 ${
+                    className={`md:mr-1 mr-6 cursor-pointer font-semibold md:text-[16px] text-[14px] leading-7 md:pl-8 ${
                       active.toLowerCase() === category.toLowerCase()
                         ? "active"
                         : ""
@@ -78,22 +81,22 @@ const Portfolio: React.FC = () => {
               </ul>
             </div>
           </div>
-          <div className="main-content grid grid-cols-3 gap-14 mt-10">
+          <div className="main-content grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-14 mt-10">
             {projects.map((project, index) => (
-              <div key={index}>
-                <div className="card bg-base-100 shadow-xl h-[360px] relative overflow-hidden">
-                  <figure className="absolute top-0 left-0 right-0 p-4 card-image">
-                    <img src={project.img} alt="Shoes" />
-                  </figure>
-                  <div className="card-body text-black">
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+              <Link to={project.link} target="blank">
+                <div key={index}>
+                  <div className="card bg-base-100 shadow-xl h-[360px] relative overflow-hidden">
+                    <figure className="absolute top-0 left-0 right-0 p-4 card-image">
+                      <img src={project.img} alt="Shoes" />
+                    </figure>
+                    <AiOutlineLink className="absolute left-1/2 -translate-x-1/2 z-50 text-3xl icon" />
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
-        <div className="bg-red-900">
+        <div className="bg-red-900 lg:block hidden">
           <Particles />
         </div>
       </div>
