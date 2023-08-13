@@ -4,3 +4,14 @@
 .form-control label {
   margin-bottom: 10px;
 }
+select.dropdown-container {
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  padding-left: 6px;
+}
+input[type="file"] {
+  border: 1px solid #efefef;
+  padding: 50px;
+  border-radius: 3px;
+}
