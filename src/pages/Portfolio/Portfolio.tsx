@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import projectsData from "../../assets/projects.json";
 import "./Portfolio.css";
 import { Particles } from "../../components";
 import { AiOutlineLink } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { NewContext } from "../../contextApi/ContextApi.jsx";
 interface ProjectsT {
   id: number;
   name: string;
@@ -16,35 +17,20 @@ interface ProjectsT {
 
 const Portfolio: React.FC = () => {
   const [active, setActive] = useState("All");
-  const [projects, setProjects] = useState<ProjectsT[]>([]);
-  const allProjects = projectsData;
+  const { receieveData } = useContext(NewContext);
+  console.log(receieveData);
 
   const categories: string[] = [
-    "All",
-    "Html Templates",
-    "Wordpress",
-    "React",
-    "Mern stack",
+    // "All",
+    // "Html Templates",
+    // "Wordpress",
+    // "React",
+    // "Mern stack",
   ];
 
   const categorySort = (category: string) => {
     setActive(category);
   };
-
-  useEffect(() => {
-    setProjects(allProjects);
-  }, []);
-
-  useEffect(() => {
-    if (active === "All") {
-      setProjects(allProjects);
-    } else {
-      const updateSorting = allProjects.filter(
-        (project) => project.category.toLowerCase() === active.toLowerCase()
-      );
-      setProjects(updateSorting);
-    }
-  }, [active]);
 
   return (
     <div>
@@ -82,12 +68,12 @@ const Portfolio: React.FC = () => {
             </div>
           </div>
           <div className="main-content grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-14 mt-10">
-            {projects.map((project, index) => (
+            {receieveData.map((project, index) => (
               <Link to={project.link} target="blank">
                 <div key={index}>
                   <div className="card bg-base-100 shadow-xl h-[360px] relative overflow-hidden">
                     <figure className="absolute top-0 left-0 right-0 p-4 card-image">
-                      <img src={project.img} alt="Shoes" />
+                      <img src={project.image} alt="Shoes" />
                     </figure>
                     <AiOutlineLink className="absolute left-1/2 -translate-x-1/2 z-50 text-3xl icon" />
                   </div>

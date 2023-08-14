@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Particles } from "../../components";
 import "../../components/Header/Header.css";
 import "./Home.css";
+import { NewContext } from "../../contextApi/ContextApi.jsx";
 const Home: React.FC = () => {
+  const { user, receieveData } = useContext(NewContext);
+  console.log("asslamuaikum", user, receieveData);
   return (
     <div className="myParticles">
       <Particles />

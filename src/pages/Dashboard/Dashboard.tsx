@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./Dashboard.css";
 import { db, storage } from "../../firebase/Firebase.config.js";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-
+import { NewContext } from "../../contextApi/ContextApi.jsx";
 import AddServices from "./addServices/AddServices.js";
 import ShowServices from "./showServices/ShowServices.js";
 
 const Dashboard: React.FC = () => {
-  const [receieveData, setReceiveData] = useState([]);
+  const { receieveData, loader, setLoader } = useContext(NewContext);
   const [technology, setTechnology] = useState([]);
   const [newProjects, setnewProjects] = useState({
     servicename: "",
@@ -69,27 +69,15 @@ const Dashboard: React.FC = () => {
       }
       try {
         const docRef = await addDoc(collection(db, "projects"), newProjects);
+        setLoader(!loader);
         console.log("Document written with ID: ", docRef.id);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
     };
-
-    const getData = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "projects"));
-        const newData = querySnapshot.docs.map((doc) => doc.data());
-        console.log(newData, "hlw");
-        setReceiveData(newData);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
-
     addToDB();
-    getData();
   }, [newProjects]);
-
+  console.log(receieveData);
   return (
     <div>
       <div className="grid grid-cols-3 m-10 gap-14">
