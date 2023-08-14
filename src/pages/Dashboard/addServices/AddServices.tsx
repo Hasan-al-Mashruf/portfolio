@@ -30,6 +30,15 @@ const AddServices = ({ findaProject, setTechnology, technology }) => {
             required
           />
         </div>
+        <div className="form-control ">
+          <input
+            type="text"
+            placeholder="project live link"
+            className="input bg-transparent border-0 border-b border-b-[#747474] rounded-none pl-0 pb-5 pr-2 text-sm"
+            name="sitelink"
+            required
+          />
+        </div>
         <div className="form-control">
           <textarea
             className="textarea bg-transparent border-0 border-b border-b-[#747474] rounded-none pl-0 pb-5 pr-2 text-sm "

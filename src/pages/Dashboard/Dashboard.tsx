@@ -23,7 +23,7 @@ const Dashboard: React.FC = () => {
     const form = e.target as HTMLFormElement;
     const servicename = (form.elements.namedItem("name") as HTMLInputElement)
       .value;
-
+    const sitelink = form.sitelink.value;
     const selectedCategory = (
       form.elements.namedItem("selectS") as HTMLSelectElement
     ).value;
@@ -49,14 +49,13 @@ const Dashboard: React.FC = () => {
               selectedCategory,
               message,
               technology,
+              sitelink,
               image: url,
             });
           }
-          console.log(url);
         });
       }
     );
-    console.log(selectedImage);
     setTechnology([]);
     form.reset();
   };
@@ -68,16 +67,15 @@ const Dashboard: React.FC = () => {
         return;
       }
       try {
-        const docRef = await addDoc(collection(db, "projects"), newProjects);
+        await addDoc(collection(db, "projects"), newProjects);
         setLoader(!loader);
-        console.log("Document written with ID: ", docRef.id);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
     };
     addToDB();
   }, [newProjects]);
-  console.log(receieveData);
+
   return (
     <div>
       <div className="grid grid-cols-3 m-10 gap-14">

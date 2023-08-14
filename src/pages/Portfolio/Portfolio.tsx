@@ -69,7 +69,7 @@ const Portfolio: React.FC = () => {
           </div>
           <div className="main-content grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-14 mt-10">
             {receieveData.map((project, index) => (
-              <Link to={project.link} target="blank">
+              <Link to={project.sitelink} target="blank">
                 <div key={index}>
                   <div className="card bg-base-100 shadow-xl h-[360px] relative overflow-hidden">
                     <figure className="absolute top-0 left-0 right-0 p-4 card-image">
