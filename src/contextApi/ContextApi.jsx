@@ -18,7 +18,12 @@ const ContextApi = ({ children }) => {
     const getData = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "projects"));
-        const newData = querySnapshot.docs.map((doc) => doc.data());
+        const newData = querySnapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            ...doc.data(),
+          };
+        });
         setReceiveData(newData);
       } catch (error) {
         console.error("Error fetching data: ", error);
