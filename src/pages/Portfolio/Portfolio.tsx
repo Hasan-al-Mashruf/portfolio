@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import projectsData from "../../assets/projects.json";
 import "./Portfolio.css";
 import { Particles } from "../../components";
 import { AiOutlineLink } from "react-icons/ai";
@@ -17,19 +16,20 @@ interface ProjectsT {
 
 const Portfolio: React.FC = () => {
   const [active, setActive] = useState("All");
-  const { receieveData } = useContext(NewContext);
+  const { receieveData, setCurrentCat } = useContext(NewContext);
   console.log(receieveData);
 
   const categories: string[] = [
-    // "All",
-    // "Html Templates",
-    // "Wordpress",
-    // "React",
-    // "Mern stack",
+    "All",
+    "Html Templates",
+    "Wordpress",
+    "React",
+    "Mern stack",
   ];
 
   const categorySort = (category: string) => {
     setActive(category);
+    setCurrentCat(category);
   };
 
   return (

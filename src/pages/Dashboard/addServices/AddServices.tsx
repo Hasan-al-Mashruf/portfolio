@@ -7,7 +7,12 @@ const AddServices = ({ findaProject, setTechnology, technology }) => {
     { label: "React", value: "React" },
     { label: "Javascript", value: "Javascript" },
     { label: "Wordpress ", value: "Wordpress" },
-    { label: "Mernstack", value: "Mernstack" },
+    { label: "Html ", value: "Html" },
+    { label: "Css ", value: "Css" },
+    { label: "Bootstrap ", value: "Bootstrap" },
+    { label: "Tailwind-Css ", value: "Tailwind-Css" },
+    { label: "Firebase ", value: "Firebase" },
+    { label: "Nodejs ", value: "Nodejs" },
   ];
 
   const categories: string[] = [

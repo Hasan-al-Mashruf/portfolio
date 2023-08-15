@@ -1,27 +1,35 @@
 import { doc, updateDoc } from "firebase/firestore";
-import React from "react";
+import React, { useContext } from "react";
 import { db } from "../../firebase/Firebase.config.js";
-const Modal = ({ setSelectedData, selectedData }) => {
-  console.log(selectedData);
+import { NewContext } from "../../contextApi/ContextApi.jsx";
+
+const Modal = ({ setSelectedData, selectedData, setShowModal }) => {
+  const { setLoader, loader } = useContext(NewContext); //@ts-ignore
   const updateData = async (e) => {
     e.preventDefault();
     setSelectedData(null);
     const form = e.target;
-    const newservicename = form.name.value;
-    console.log(newservicename);
+    const newServiceName = form.name.value;
+    const newSitelink = form.sitelink.value;
+    const newMessage = form.message.value;
     const washingtonRef = doc(db, "projects", selectedData.id);
-    await updateDoc(washingtonRef, {
-      servicename: newservicename,
-    });
+    try {
+      await updateDoc(washingtonRef, {
+        servicename: newServiceName,
+        message: newMessage,
+        sitelink: newSitelink,
+      });
+      setLoader(!loader);
+    } catch (error) {
+      console.error("Error deleting document:", error);
+    }
+    setShowModal(false);
   };
   return (
     <div>
       {/* You can open the modal using ID.showModal() method */}
 
       <dialog id="my_modal_3" className="modal">
-        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-          ✕
-        </button>
         <form method="dialog" className="modal-box" onSubmit={updateData}>
           <div className="form-control ">
             <input

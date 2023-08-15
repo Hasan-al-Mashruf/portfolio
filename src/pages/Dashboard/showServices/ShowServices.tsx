@@ -5,6 +5,7 @@ import { NewContext } from "../../../contextApi/ContextApi.jsx";
 import { Modal } from "../../../components/index.js";
 const ShowServices = ({ receieveData }) => {
   const { loader, setLoader } = useContext(NewContext);
+  const [showModal, setShowModal] = useState(true);
   const [selectedData, setSelectedData] = useState(null);
   const deleteIt = async (id) => {
     try {
@@ -17,6 +18,7 @@ const ShowServices = ({ receieveData }) => {
     }
   };
   const openModalData = (data) => {
+    setShowModal(true);
     setSelectedData(data);
     window.my_modal_3.showModal();
   };
@@ -88,7 +90,14 @@ const ShowServices = ({ receieveData }) => {
           </tbody>
         </table>
       </div>
-      <Modal selectedData={selectedData} setSelectedData={setSelectedData} />
+      {showModal && (
+        <Modal
+          selectedData={selectedData}
+          setSelectedData={setSelectedData}
+          setShowModal={setShowModal}
+          showModal={showModal}
+        />
+      )}
     </div>
   );
 };
