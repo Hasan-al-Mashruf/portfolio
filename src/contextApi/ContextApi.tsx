@@ -1,14 +1,37 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState, ReactNode } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase/Firebase.config";
-export const NewContext = createContext();
 
-const ContextApi = ({ children }) => {
+export const NewContext = createContext<AuthInfo | undefined>(undefined);
+
+type Project = {
+  id: string;
+  servicename: string;
+  selectedCategory: string;
+  message: string;
+  technology: { label: string; value: string }[];
+  sitelink: string;
+  image: string | null;
+};
+
+type AuthInfo = {
+  user: string;
+  receieveData: Project[]; // You should replace `any` with the actual type of your data
+  setLoader: React.Dispatch<React.SetStateAction<boolean>>;
+  loader: boolean;
+  setCurrentCat: React.Dispatch<React.SetStateAction<string>>;
+};
+
+type ContextApiProps = {
+  children: ReactNode;
+};
+
+const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
   const [user, setUser] = useState("hasan");
   const [receieveData, setReceiveData] = useState([]);
   const [loader, setLoader] = useState(false);
   const [currentCat, setCurrentCat] = useState("All");
-  const authInfo = {
+  const authInfo: AuthInfo = {
     user,
     receieveData,
     setLoader,
@@ -52,7 +75,6 @@ const ContextApi = ({ children }) => {
     };
     getData();
   }, [loader, currentCat]);
-  console.log(currentCat);
   return (
     <div>
       <NewContext.Provider value={authInfo}>{children}</NewContext.Provider>

@@ -3,16 +3,32 @@ import React, { useContext } from "react";
 import { db } from "../../firebase/Firebase.config.js";
 import { NewContext } from "../../contextApi/ContextApi.jsx";
 
-const Modal = ({ setSelectedData, selectedData, setShowModal }) => {
-  const { setLoader, loader } = useContext(NewContext); //@ts-ignore
-  const updateData = async (e) => {
+type ModalProps = {
+  setSelectedData: React.Dispatch<React.SetStateAction<any>>;
+  selectedData: any;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  showModal?: boolean;
+};
+
+const Modal: React.FC<ModalProps> = ({
+  setSelectedData,
+  selectedData,
+  setShowModal,
+}) => {
+  const { setLoader, loader } = useContext(NewContext);
+  const updateData = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     e.preventDefault();
-    setSelectedData(null);
-    const form = e.target;
-    const newServiceName = form.name.value;
+
+    const form = e.currentTarget;
+
+    const newServiceName = form.servicename.value;
     const newSitelink = form.sitelink.value;
     const newMessage = form.message.value;
+
     const washingtonRef = doc(db, "projects", selectedData.id);
+
     try {
       await updateDoc(washingtonRef, {
         servicename: newServiceName,
@@ -21,8 +37,9 @@ const Modal = ({ setSelectedData, selectedData, setShowModal }) => {
       });
       setLoader(!loader);
     } catch (error) {
-      console.error("Error deleting document:", error);
+      console.error("Error updating document:", error);
     }
+
     setShowModal(false);
   };
   return (
@@ -36,7 +53,7 @@ const Modal = ({ setSelectedData, selectedData, setShowModal }) => {
               type="text"
               placeholder="Service Name"
               className="input bg-transparent border-0 border-b border-b-[#747474] rounded-none pl-0 pb-5 pr-2 text-sm"
-              name="name"
+              name="servicename"
               required
             />
           </div>

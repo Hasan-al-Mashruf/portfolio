@@ -10,12 +10,13 @@ import ShowServices from "./showServices/ShowServices.js";
 const Dashboard: React.FC = () => {
   const { receieveData, loader, setLoader } = useContext(NewContext);
   const [technology, setTechnology] = useState([]);
-  const [newProjects, setnewProjects] = useState({
+  const [newProjects, setNewProjects] = useState({
     servicename: "",
     selectedCategory: "",
     message: "",
-    technology: [],
-    image: null,
+    technology: [] as { label: string; value: string }[],
+    sitelink: "",
+    image: null as string | null,
   });
 
   const findaProject = (e: React.FormEvent<HTMLFormElement>) => {
@@ -44,7 +45,7 @@ const Dashboard: React.FC = () => {
         // download url
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
           if (url) {
-            setnewProjects({
+            setNewProjects({
               servicename,
               selectedCategory,
               message,

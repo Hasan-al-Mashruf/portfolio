@@ -20,7 +20,7 @@ const ShowServices = ({ receieveData }) => {
   const openModalData = (data) => {
     setShowModal(true);
     setSelectedData(data);
-    window.my_modal_3.showModal();
+    (window as any).my_modal_3.showModal();
   };
   return (
     <div className="col-span-2">

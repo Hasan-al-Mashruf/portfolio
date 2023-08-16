@@ -1,7 +1,19 @@
 import React from "react";
 import { MultiSelect } from "react-multi-select-component";
 
-const AddServices = ({ findaProject, setTechnology, technology }) => {
+type AddServicesProps = {
+  findaProject: (e: React.FormEvent<HTMLFormElement>) => void;
+  setTechnology: React.Dispatch<
+    React.SetStateAction<{ label: string; value: string }[]>
+  >;
+  technology: { label: string; value: string }[];
+};
+
+const AddServices: React.FC<AddServicesProps> = ({
+  findaProject,
+  setTechnology,
+  technology,
+}) => {
   const options = [
     { label: "Typescript", value: "Typescript" },
     { label: "React", value: "React" },
