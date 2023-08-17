@@ -3,9 +3,21 @@ import React, { useContext } from "react";
 import { db } from "../../firebase/Firebase.config.js";
 import { NewContext } from "../../contextApi/ContextApi.jsx";
 
+type ReceieveDataT = {
+  id: number | string;
+  servicename: string;
+  selectedCategory: string;
+  message: string;
+  technology: { label: string; value: string }[];
+  sitelink: string;
+  image: string | null;
+};
+
 type ModalProps = {
-  setSelectedData: React.Dispatch<React.SetStateAction<any>>;
-  selectedData: any;
+  setSelectedData: React.Dispatch<
+    React.SetStateAction<undefined | ReceieveDataT>
+  >;
+  selectedData: undefined | ReceieveDataT;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   showModal?: boolean;
 };
@@ -16,18 +28,24 @@ const Modal: React.FC<ModalProps> = ({
   setShowModal,
 }) => {
   const { setLoader, loader } = useContext(NewContext);
-  const updateData = async (
-    e: React.FormEvent<HTMLFormElement>
-  ): Promise<void> => {
+  const updateData = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const form = e.currentTarget;
+    const form = e.target as HTMLFormElement;
+    const newSitelink = (form.sitelink as HTMLInputElement)?.value || "";
+    const newServiceName = (form.servicename as HTMLInputElement)?.value || "";
+    const newMessage = (form.message as HTMLTextAreaElement).value || "";
+    type Selectdatatype = {
+      id: string;
+    };
 
-    const newServiceName = form.servicename.value;
-    const newSitelink = form.sitelink.value;
-    const newMessage = form.message.value;
+    doc(db, "projects", (selectedData as Selectdatatype)?.id);
 
-    const washingtonRef = doc(db, "projects", selectedData.id);
+    const washingtonRef = doc(
+      db,
+      "projects",
+      (selectedData as Selectdatatype)?.id
+    );
 
     try {
       await updateDoc(washingtonRef, {
@@ -47,7 +65,7 @@ const Modal: React.FC<ModalProps> = ({
       {/* You can open the modal using ID.showModal() method */}
 
       <dialog id="my_modal_3" className="modal">
-        <form method="dialog" className="modal-box" onSubmit={updateData}>
+        <form method="dialog" className="modal-box" onSubmit={void updateData}>
           <div className="form-control ">
             <input
               type="text"

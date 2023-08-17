@@ -25,6 +25,7 @@ const AddServices: React.FC<AddServicesProps> = ({
     { label: "Tailwind-Css ", value: "Tailwind-Css" },
     { label: "Firebase ", value: "Firebase" },
     { label: "Nodejs ", value: "Nodejs" },
+    { label: "Jquery", value: "Jquery" },
   ];
 
   const categories: string[] = [
