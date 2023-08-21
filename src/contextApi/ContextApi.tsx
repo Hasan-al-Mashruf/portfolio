@@ -2,10 +2,8 @@ import React, { createContext, useEffect, useState, ReactNode } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase/Firebase.config";
 
-export const NewContext = createContext<AuthInfo | undefined>(undefined);
-
-type Project = {
-  id: string;
+type ReceieveDataT = {
+  id: number | string;
   servicename: string;
   selectedCategory: string;
   message: string;
@@ -14,18 +12,19 @@ type Project = {
   image: string | null;
 };
 
-type AuthInfo = {
+interface AuthInfo {
   user: string;
-  receieveData: Project[]; // You should replace `any` with the actual type of your data
+  receieveData: ReceieveDataT[];
   setLoader: React.Dispatch<React.SetStateAction<boolean>>;
   loader: boolean;
   setCurrentCat: React.Dispatch<React.SetStateAction<string>>;
-};
+}
 
 type ContextApiProps = {
   children: ReactNode;
 };
 
+export const NewContext = createContext<AuthInfo | undefined>(undefined);
 const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
   const [user, setUser] = useState("hasan");
   const [receieveData, setReceiveData] = useState([]);
@@ -73,7 +72,7 @@ const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
         }
       }
     };
-    getData();
+    void getData();
   }, [loader, currentCat]);
   return (
     <div>

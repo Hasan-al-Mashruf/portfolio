@@ -24,7 +24,7 @@ const Dashboard: React.FC = () => {
     const form = e.target as HTMLFormElement;
     const servicename = (form.elements.namedItem("name") as HTMLInputElement)
       .value;
-    const sitelink = form.sitelink.value;
+    const sitelink = (form.sitelink as HTMLInputElement)?.value || "";
     const selectedCategory = (
       form.elements.namedItem("selectS") as HTMLSelectElement
     ).value;
@@ -39,11 +39,11 @@ const Dashboard: React.FC = () => {
     const uploadTask = uploadBytesResumable(storageRef, selectedImage);
     uploadTask.on(
       "state_changed",
-      () => {},
+      () => void {},
       (err) => console.log(err),
       () => {
         // download url
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+        void getDownloadURL(uploadTask.snapshot.ref).then((url) => {
           if (url) {
             setNewProjects({
               servicename,
@@ -57,7 +57,7 @@ const Dashboard: React.FC = () => {
         });
       }
     );
-    setTechnology([]);
+    void setTechnology([]);
     form.reset();
   };
 
