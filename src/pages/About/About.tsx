@@ -7,14 +7,15 @@ import {
   reactLogo,
   wordpressLogo,
 } from "../../assets";
-import { Particles } from "../../components";
+import { Particles, ShortURL } from "../../components";
+import { Link } from "react-router-dom";
 
 const About: React.FC = () => {
   return (
     <div className="grid lg:grid-cols-3 grid-cols-1">
       <div className="about-section text-white text-center h-screen py-10 relative pt-20 overflow-y-scroll p-5 lg:col-span-2">
-        <div className="w-5/6 mx-auto">
-          <h1 className="md:text-xl text-base text-center md:leading-[36px] relative z-10">
+        <div className="md:w-5/6 mx-auto">
+          <h1 className="md:text-xl text-sm leading-[24px] md:text-center md:leading-[36px] relative z-10">
             I specialize in crafting seamless front-end solutions using React,
             JavaScript, and TypeScript, seamlessly integrated with diverse
             backends including Firebase integration with Mern stack. With
@@ -23,12 +24,17 @@ const About: React.FC = () => {
             <br /> Let's collaborate to bring your digital ideas to life
             effectively and beautifully.
           </h1>
-          <button className="btn mt-5 bg-[#1d1e21] text-white text-[14px] border-0">
-            Let's Work
-          </button>
-          <button className="btn mt-5 bg-[#1d1e21] text-white text-[14px] border-0 ml-3">
-            Let's Explore POrtfolio
-          </button>
+
+          <Link to="/contact">
+            <button className="btn mt-5 bg-[#1d1e21] text-white text-[14px] border-0">
+              Let's Work
+            </button>
+          </Link>
+          <Link to="/portfolio">
+            <button className="btn mt-5 bg-[#1d1e21] text-white text-[14px] border-0 ml-3">
+              Explore Portfolio
+            </button>
+          </Link>
         </div>
         <div className="absolute top-3 w-full left-0">
           <h1 className=" md:text-[90px] text-[60px] text-[#3d3d3d3b] uppercase font-bold">
@@ -111,8 +117,9 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="bg-red-400 lg:block hidden">
+      <div className="bg-[#530303] lg:block hidden relative">
         <Particles />
+        <ShortURL />
       </div>
     </div>
   );

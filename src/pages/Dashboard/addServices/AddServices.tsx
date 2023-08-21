@@ -23,6 +23,10 @@ const AddServices: React.FC<AddServicesProps> = ({
     { label: "Css ", value: "Css" },
     { label: "Bootstrap ", value: "Bootstrap" },
     { label: "Tailwind-Css ", value: "Tailwind-Css" },
+    {
+      label: "Jquery-Owl-carousel, Swipe-slide",
+      value: "Jquery-Owl-carousel, Swipe-slide",
+    },
     { label: "Firebase ", value: "Firebase" },
     { label: "Nodejs ", value: "Nodejs" },
   ];

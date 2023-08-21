@@ -9,12 +9,12 @@
   box-sizing: border-box;
 }
 
-span {
+/* span {
   background: linear-gradient(to right, #00ffcc, #ff6600);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
+} */
 
 ::-webkit-scrollbar {
   width: 10px;

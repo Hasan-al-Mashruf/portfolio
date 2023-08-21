@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import "./Portfolio.css";
-import { Particles } from "../../components";
+import { CheckDomain, Particles } from "../../components";
 import { AiOutlineLink } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { NewContext } from "../../contextApi/ContextApi.jsx";
@@ -17,7 +17,7 @@ interface ProjectsT {
 const Portfolio: React.FC = () => {
   const [active, setActive] = useState("All");
   const { receieveData, setCurrentCat } = useContext(NewContext);
-  console.log(receieveData);
+  const [showMenu, HideMenu] = useState(false);
 
   const categories: string[] = [
     "All",
@@ -41,7 +41,7 @@ const Portfolio: React.FC = () => {
               Portfolio
             </h1>
           </div>
-          <div className="content pt-36 grid md:grid-cols-4 grid-cols-1 gap-10 items-center">
+          <div className="content pt-36 grid md:grid-cols-4 grid-cols-1 gap-10">
             <h2 className="font-semibold text-[20px] ">
               My <span>portfolio</span>
             </h2>
@@ -82,8 +82,9 @@ const Portfolio: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="bg-red-900 lg:block hidden">
+        <div className="bg-red-900 lg:block hidden relative">
           <Particles />
+          <CheckDomain />
         </div>
       </div>
     </div>
