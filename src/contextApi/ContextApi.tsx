@@ -4,6 +4,7 @@ import { db, auth } from "../firebase/Firebase.config";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
 type ReceieveDataT = {
@@ -23,6 +24,7 @@ interface AuthInfo {
   loader: boolean;
   setCurrentCat: React.Dispatch<React.SetStateAction<string>>;
   createUser: (name: string, email: string, password: string) => Promise<void>;
+  loginUser: (email: string, password: string) => Promise<void>;
 }
 
 type ContextApiProps = {
@@ -31,7 +33,7 @@ type ContextApiProps = {
 
 export const NewContext = createContext<AuthInfo | undefined>(undefined);
 const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
-  const [user, setUser] = useState("hasan");
+  const [user, setUser] = useState(null);
   const [receieveData, setReceiveData] = useState([]);
   const [loader, setLoader] = useState(false);
   const [currentCat, setCurrentCat] = useState("All");
@@ -101,6 +103,11 @@ const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
       });
   };
 
+  const loginUser = (email: string, password: string) => {
+    setLoader(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
   const authInfo: AuthInfo = {
     user,
     receieveData,
@@ -108,6 +115,7 @@ const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
     loader,
     setCurrentCat,
     createUser,
+    loginUser,
   };
 
   useEffect(() => {

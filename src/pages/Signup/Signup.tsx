@@ -1,28 +1,29 @@
 import React, { useContext } from "react";
 import { NewContext } from "../../contextApi/ContextApi";
+import { Link } from "react-router-dom";
 
-interface SigninFormData {
+interface SignupFormData {
   userName: string;
   email: string;
   password: string;
 }
 
-const Signin = () => {
-  const { loginUser, user } = useContext(NewContext);
+const Signup = () => {
+  const { createUser } = useContext(NewContext);
   const findaUser = (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
-    const formData: SigninFormData = {
+    const formData: SignupFormData = {
       userName: (form.userName as HTMLInputElement)?.value,
       email: (form.email as HTMLInputElement)?.value,
       password: (form.password as HTMLInputElement)?.value,
     };
-    loginUser(formData.email, formData.password);
+
+    createUser(formData.userName, formData.email, formData.password);
+    form.reset();
   };
-  console.log(user);
   return (
     <div className="w-full h-screen flex items-center flex-col justify-center bg-[#f0ffff] relative">
-      <div className="overlay"></div>
       <form
         action=""
         onSubmit={findaUser}
@@ -53,6 +54,7 @@ const Signin = () => {
             name="password"
           />
         </div>
+        <Link to="/signin">Sign in</Link>
         <div className="form-control mt-6 items-baseline flex-row btn-custom">
           <input type="submit" value="Submit" className="btn btn-primary" />
         </div>
@@ -61,4 +63,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;
