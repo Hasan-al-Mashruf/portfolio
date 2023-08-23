@@ -31,7 +31,6 @@ const CheckDomain = () => {
             placeholder="Check your domain...."
             className="input input-bordered w-full pr-16"
             value={domain}
-            onChange={(event) => setDomain(event.target.value)}
           />
           <input
             type="submit"

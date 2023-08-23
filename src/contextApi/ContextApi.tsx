@@ -1,7 +1,11 @@
 import React, { createContext, useEffect, useState, ReactNode } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../firebase/Firebase.config";
-
+import { db, auth } from "../firebase/Firebase.config";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  updateProfile,
+} from "firebase/auth";
 type ReceieveDataT = {
   id: number | string;
   servicename: string;
@@ -18,6 +22,7 @@ interface AuthInfo {
   setLoader: React.Dispatch<React.SetStateAction<boolean>>;
   loader: boolean;
   setCurrentCat: React.Dispatch<React.SetStateAction<string>>;
+  createUser: (name: string, email: string, password: string) => Promise<void>;
 }
 
 type ContextApiProps = {
@@ -30,13 +35,6 @@ const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
   const [receieveData, setReceiveData] = useState([]);
   const [loader, setLoader] = useState(false);
   const [currentCat, setCurrentCat] = useState("All");
-  const authInfo: AuthInfo = {
-    user,
-    receieveData,
-    setLoader,
-    loader,
-    setCurrentCat,
-  };
 
   useEffect(() => {
     const getData = async () => {
@@ -74,6 +72,52 @@ const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
     };
     void getData();
   }, [loader, currentCat]);
+
+  const createUser = (name: string, email: string, password: string) => {
+    setLoader(true);
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        })
+          .then(() => {
+            // Profile updated!
+            // ...
+          })
+          .catch((error) => {
+            // An error occurred
+            // ...
+          });
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error);
+        // ..
+      });
+  };
+
+  const authInfo: AuthInfo = {
+    user,
+    receieveData,
+    setLoader,
+    loader,
+    setCurrentCat,
+    createUser,
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoader(false);
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <div>
       <NewContext.Provider value={authInfo}>{children}</NewContext.Provider>
