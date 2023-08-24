@@ -35,7 +35,7 @@ export const NewContext = createContext<AuthInfo | undefined>(undefined);
 const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
   const [user, setUser] = useState(null);
   const [receieveData, setReceiveData] = useState([]);
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true);
   const [currentCat, setCurrentCat] = useState("All");
 
   useEffect(() => {

@@ -6,6 +6,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { NewContext } from "../../contextApi/ContextApi.jsx";
 import AddServices from "./addServices/AddServices.js";
 import ShowServices from "./showServices/ShowServices.js";
+import { Outlet } from "react-router-dom";
 
 const Dashboard: React.FC = () => {
   const { receieveData, loader, setLoader } = useContext(NewContext);
@@ -79,7 +80,8 @@ const Dashboard: React.FC = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-3 m-10 gap-14">
+      <Outlet />
+      <div className="">
         <AddServices
           findaProject={findaProject}
           technology={technology}

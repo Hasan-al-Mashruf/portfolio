@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { NewContext } from "../../contextApi/ContextApi";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface SigninFormData {
   userName: string;
@@ -9,6 +10,7 @@ interface SigninFormData {
 
 const Signin = () => {
   const { loginUser, user } = useContext(NewContext);
+  const navigate = useNavigate();
   const findaUser = (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
@@ -18,8 +20,9 @@ const Signin = () => {
       password: (form.password as HTMLInputElement)?.value,
     };
     loginUser(formData.email, formData.password);
+    navigate("/dashbaord");
   };
-  console.log(user);
+
   return (
     <div className="w-full h-screen flex items-center flex-col justify-center bg-[#f0ffff] relative">
       <div className="overlay"></div>

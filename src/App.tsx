@@ -14,12 +14,23 @@ import {
 import Portfolio from "./pages/Portfolio/Portfolio";
 import { useContext } from "react";
 import { NewContext } from "./contextApi/ContextApi";
+import Holabu from "./pages/Holabu/Holabu";
 
 const ProtectedRoutes = ({ children }) => {
-  const { user } = useContext(NewContext);
-  console.log(user); // Move context usage inside the component
+  const { user, loader } = useContext(NewContext);
+
+  if (loader) {
+    return "Loading........";
+  }
+
   if (!user) {
-    return <Navigate to="/signup" />;
+    return (
+      <Navigate
+        to="/signup"
+        state={{ from: window.location.pathname }}
+        replace
+      />
+    );
   }
   return children;
 };
@@ -35,6 +46,8 @@ const App: React.FC = () => {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
           <Route
             path="/dashboard"
             element={
@@ -42,9 +55,9 @@ const App: React.FC = () => {
                 <Dashboard />
               </ProtectedRoutes>
             }
-          />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/signin" element={<Signin />} />
+          >
+            <Route path="holabu" element={<Holabu />} />
+          </Route>
         </Route>
       </Routes>
     </>
