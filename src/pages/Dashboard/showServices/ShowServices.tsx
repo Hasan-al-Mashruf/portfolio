@@ -14,8 +14,8 @@ type ReceieveDataT = {
   image: string | null;
 };
 
-const ShowServices = ({ receieveData }) => {
-  const { loader, setLoader } = useContext(NewContext);
+const ShowServices = () => {
+  const { loader, setLoader, receieveData } = useContext(NewContext);
   const [showModal, setShowModal] = useState(true);
   const [selectedData, setSelectedData] = useState<ReceieveDataT | null>(null);
   const deleteIt = async (id: string | number) => {
@@ -69,9 +69,7 @@ const ShowServices = ({ receieveData }) => {
                       </div>
                     </td>
                     <td>
-                      <span className="badge badge-ghost badge-sm">
-                        {data.servicename}
-                      </span>
+                      <span>{data.servicename}</span>
                     </td>
                     <td>{data.selectedCategory}</td>
                     <td>
@@ -97,10 +95,10 @@ const ShowServices = ({ receieveData }) => {
                     </td>
                     <td>
                       <button
-                        className="btn"
+                        className="btn btn-ghost btn-xs"
                         onClick={() => openModalData(data)}
                       >
-                        open modal
+                        update
                       </button>
                     </td>
                   </tr>

@@ -14,7 +14,8 @@ import {
 import Portfolio from "./pages/Portfolio/Portfolio";
 import { useContext } from "react";
 import { NewContext } from "./contextApi/ContextApi";
-import Holabu from "./pages/Holabu/Holabu";
+import AddServices from "./pages/Dashboard/addServices/AddServices";
+import ShowServices from "./pages/Dashboard/showServices/ShowServices";
 
 const ProtectedRoutes = ({ children }) => {
   const { user, loader } = useContext(NewContext);
@@ -56,7 +57,8 @@ const App: React.FC = () => {
               </ProtectedRoutes>
             }
           >
-            <Route path="holabu" element={<Holabu />} />
+            <Route path="/dashboard" element={<ShowServices />} />
+            <Route path="/dashboard/addServices" element={<AddServices />} />
           </Route>
         </Route>
       </Routes>

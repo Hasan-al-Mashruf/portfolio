@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { MultiSelect } from "react-multi-select-component";
-
+import { db, storage } from "../../../firebase/Firebase.config.js";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { collection, addDoc } from "firebase/firestore";
+import { NewContext } from "../../../contextApi/ContextApi.jsx";
 type AddServicesProps = {
-  findaProject: (e: React.FormEvent<HTMLFormElement>) => void;
   setTechnology: React.Dispatch<
     React.SetStateAction<{ label: string; value: string }[]>
   >;
   technology: { label: string; value: string }[];
 };
 
-const AddServices: React.FC<AddServicesProps> = ({
-  findaProject,
-  setTechnology,
-  technology,
-}) => {
+const AddServices: React.FC = () => {
+  const [technology, setTechnology] = useState([]);
   const options = [
     { label: "Typescript", value: "Typescript" },
     { label: "React", value: "React" },
@@ -39,7 +38,74 @@ const AddServices: React.FC<AddServicesProps> = ({
     "React",
     "Mern stack",
   ];
+  const { receieveData, loader, setLoader } = useContext(NewContext);
 
+  const findaProject = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const servicename = (form.elements.namedItem("name") as HTMLInputElement)
+      .value;
+    const sitelink = (form.sitelink as HTMLInputElement)?.value || "";
+    const selectedCategory = (
+      form.elements.namedItem("selectS") as HTMLSelectElement
+    ).value;
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement)
+      .value;
+    if (!servicename || !message) {
+      return;
+    }
+    const selectedImage = form.image.files[0];
+
+    const storageRef = ref(storage, `/files/${selectedImage.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, selectedImage);
+    uploadTask.on(
+      "state_changed",
+      () => void {},
+      (err) => console.log(err),
+      () => {
+        // download url
+        void getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          if (url) {
+            setNewProjects({
+              servicename,
+              selectedCategory,
+              message,
+              technology,
+              sitelink,
+              image: url,
+            });
+          }
+        });
+      }
+    );
+    void setTechnology([]);
+    form.reset();
+  };
+
+  const [newProjects, setNewProjects] = useState({
+    servicename: "",
+    selectedCategory: "",
+    message: "",
+    technology: [] as { label: string; value: string }[],
+    sitelink: "",
+    image: null as string | null,
+  });
+
+  useEffect(() => {
+    const addToDB = async () => {
+      if (!newProjects.servicename || !newProjects.message) {
+        alert("bull");
+        return;
+      }
+      try {
+        await addDoc(collection(db, "projects"), newProjects);
+        setLoader(!loader);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    };
+    addToDB();
+  }, [newProjects]);
   return (
     <div>
       <form action="" onSubmit={findaProject}>
