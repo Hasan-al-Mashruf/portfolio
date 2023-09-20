@@ -16,12 +16,13 @@ import { useContext } from "react";
 import { NewContext } from "./contextApi/ContextApi";
 import AddServices from "./pages/Dashboard/addServices/AddServices";
 import ShowServices from "./pages/Dashboard/showServices/ShowServices";
+import { Loader } from "./components";
 
 const ProtectedRoutes = ({ children }) => {
   const { user, loader } = useContext(NewContext);
 
   if (loader) {
-    return "Loading........";
+    return <Loader />;
   }
 
   if (!user) {

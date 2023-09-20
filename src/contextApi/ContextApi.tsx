@@ -24,7 +24,9 @@ interface AuthInfo {
   loader: boolean;
   setCurrentCat: React.Dispatch<React.SetStateAction<string>>;
   createUser: (name: string, email: string, password: string) => Promise<void>;
-  loginUser: (email: string, password: string) => Promise<void>;
+  loginUser: (email: string, password: string) => void;
+  contentLoader: boolean;
+  setContentLoader: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 type ContextApiProps = {
@@ -37,6 +39,7 @@ const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
   const [receieveData, setReceiveData] = useState([]);
   const [loader, setLoader] = useState(true);
   const [currentCat, setCurrentCat] = useState("All");
+  const [contentLoader, setContentLoader] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -73,7 +76,7 @@ const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
       }
     };
     void getData();
-  }, [loader, currentCat]);
+  }, [contentLoader, currentCat]);
 
   const createUser = (name: string, email: string, password: string) => {
     setLoader(true);
@@ -116,6 +119,8 @@ const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
     setCurrentCat,
     createUser,
     loginUser,
+    contentLoader,
+    setContentLoader,
   };
 
   useEffect(() => {

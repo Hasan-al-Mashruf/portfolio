@@ -2,8 +2,8 @@ import { deleteDoc, doc } from "firebase/firestore";
 import React, { useContext, useState } from "react";
 import { db } from "../../../firebase/Firebase.config.js";
 import { NewContext } from "../../../contextApi/ContextApi.jsx";
-import { Modal } from "../../../components/index.js";
-
+import { Modal, Pagination } from "../../../components/index.js";
+import "./showServices.css";
 type ReceieveDataT = {
   id: number | string;
   servicename: string;
@@ -15,14 +15,16 @@ type ReceieveDataT = {
 };
 
 const ShowServices = () => {
-  const { loader, setLoader, receieveData } = useContext(NewContext);
+  const { contentLoader, setContentLoader, receieveData } =
+    useContext(NewContext);
   const [showModal, setShowModal] = useState(true);
   const [selectedData, setSelectedData] = useState<ReceieveDataT | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const deleteIt = async (id: string | number) => {
     try {
       const docRef = doc(db, "projects", id as string);
       await deleteDoc(docRef);
-      setLoader(!loader);
+      setContentLoader(!contentLoader);
     } catch (error) {
       console.error("Error deleting document:", error);
     }
@@ -33,15 +35,21 @@ const ShowServices = () => {
     setSelectedData(data);
     (window as any).my_modal_3.showModal();
   };
+
+  // Calculate the start and end index for the current page
+  const dataPaginationRate = 5;
+  const startIndex = (currentPage - 1) * dataPaginationRate;
+  const endIndex = currentPage * dataPaginationRate;
+  const currentData = receieveData.slice(startIndex, endIndex);
+
   return (
-    <div className="col-span-2">
-      <div className="overflow-x-auto">
-        <table className="table">
+    <div className="col-span-2 p-16 pt-12">
+      <div className="overflow-x-auto h-[80vh]  border border-gray-400">
+        <table className="table ">
           {/* head */}
           <thead>
             <tr>
               <th>Index</th>
-              <th>image</th>
               <th>name</th>
 
               <th>services</th>
@@ -49,37 +57,20 @@ const ShowServices = () => {
             </tr>
           </thead>
           <tbody>
-            {receieveData &&
-              (receieveData as ReceieveDataT[])?.map(
+            {receieveData.length > 0 &&
+              (currentData as ReceieveDataT[])?.map(
                 (data: ReceieveDataT, index: number) => (
                   <tr key={index}>
                     <td>
                       <label>{index + 1}</label>
                     </td>
                     <td>
-                      <div className="flex items-center space-x-3">
-                        <div className="avatar">
-                          <div className="mask mask-squircle w-12 h-12">
-                            <img
-                              src={`${data.image}`}
-                              alt="Avatar Tailwind CSS Component"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
                       <span>{data.servicename}</span>
                     </td>
                     <td>{data.selectedCategory}</td>
-                    <td>
+                    <td className="technology">
                       {data.technology?.map((tech, index) => (
-                        <span
-                          className="badge badge-ghost badge-sm"
-                          key={index}
-                        >
-                          {tech.value}
-                        </span>
+                        <span key={index}>{tech.value}</span>
                       ))}
                     </td>
                     <td>
@@ -107,6 +98,13 @@ const ShowServices = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Page numbers */}
+      <Pagination
+        totalPages={Math.ceil(receieveData.length / dataPaginationRate)}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
       {showModal && (
         <Modal
           selectedData={selectedData}
