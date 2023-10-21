@@ -50,10 +50,20 @@ const Header = () => {
 
               {user && (
                 <>
-                  <NavLink to="/dashboard">
+                  <NavLink
+                    to="/dashboard/showServices"
+                    className={({ isActive, isPending }) =>
+                      isPending ? "pending" : isActive ? "active" : ""
+                    }
+                  >
                     <BiSolidDashboard />
                   </NavLink>
-                  <NavLink to="/dashboard/addServices">
+                  <NavLink
+                    to="/dashboard/addServices"
+                    className={({ isActive, isPending }) =>
+                      isPending ? "pending" : isActive ? "active" : ""
+                    }
+                  >
                     <BsDatabaseAdd />
                   </NavLink>
                 </>

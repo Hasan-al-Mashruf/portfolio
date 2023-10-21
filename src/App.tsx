@@ -60,7 +60,7 @@ const App: React.FC = () => {
             </ProtectedRoutes>
           }
         >
-          <Route path="/dashboard" element={<ShowServices />} />
+          <Route path="/dashboard/showServices" element={<ShowServices />} />
           <Route path="/dashboard/addServices" element={<AddServices />} />
         </Route>
       </Routes>
