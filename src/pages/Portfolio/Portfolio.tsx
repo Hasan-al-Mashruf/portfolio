@@ -35,7 +35,7 @@ const Portfolio: React.FC = () => {
 
   return (
     <>
-      <div className="grid mashruf">
+      <div className="maximum-width">
         <div className=" text-white h-screen py-10 relative pt-20 overflow-y-scroll p-5 lg:col-span-2">
           <div className="absolute top-3 w-full left-0">
             <h1 className=" md:text-[90px] text-[56px] text-[#3d3d3d3b] uppercase font-bold text-center">
@@ -86,8 +86,12 @@ const Portfolio: React.FC = () => {
       </div>
 
       <div className="bg-[#530303] lg:block hidden relative">
-        <Particles />
-        <CheckDomain />
+        <div className="absolute">
+          <Particles />
+        </div>
+        <div className="right-sidebar h-screen relative">
+          <CheckDomain />
+        </div>
       </div>
     </>
   );

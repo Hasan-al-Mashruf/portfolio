@@ -4,10 +4,8 @@ import "./Main.css";
 
 const Main: React.FC = () => {
   return (
-    <div className="flex">
-      <Header />
-
-      <div className="flex-1 relative ">
+    <div className="">
+      <div className="flex-1 relative">
         <div className="about-section">
           <Outlet />
         </div>

@@ -107,11 +107,11 @@ const AddServices: React.FC = () => {
     addToDB();
   }, [newProjects]);
   return (
-    <div className="mx-20 my-12 border border-gray-200 h-full shadow-lg">
+    <div className="mx-20 my-12 border border-gray-200 h-full shadow-lg  rounded-md">
       <form
         action=""
         onSubmit={findaProject}
-        className="p-10 grid grid-cols-2 gap-10"
+        className="p-10 grid grid-cols-2 gap-10 "
       >
         <div>
           <div className="form-control ">
@@ -141,7 +141,9 @@ const AddServices: React.FC = () => {
             ></textarea>
           </div>
           <div className="form-control">
-            <label htmlFor="">Find any technology</label>
+            <label htmlFor="" className="text-white">
+              Find any technology
+            </label>
             <MultiSelect
               options={options}
               value={technology}
@@ -153,7 +155,9 @@ const AddServices: React.FC = () => {
         </div>
         <div>
           <div className="form-control">
-            <label htmlFor="">Select a category</label>
+            <label htmlFor="" className="text-white">
+              Select a category
+            </label>
             <select
               name="selectS"
               required

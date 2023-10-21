@@ -8,14 +8,14 @@
 
 /* .about {
 } */
-.mashruf {
+.maximum-width {
   max-width: 896px;
 }
 @media screen and (min-width: 1350px) {
   .about-section {
     grid-template-columns: repeat(2, 1fr);
   }
-  .mashruf {
+  .maximum-width {
     margin-left: auto;
   }
 }
@@ -23,7 +23,7 @@
   .about-section {
     grid-template-columns: repeat(1, 1fr);
   }
-  .mashruf {
+  .maximum-width {
     max-width: 100%;
   }
 }

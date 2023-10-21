@@ -48,11 +48,11 @@ const ShowServices = () => {
   const currentData = receieveData.slice(startIndex, endIndex);
 
   return (
-    <div className="mx-20 my-12 border border-gray-600 h-full">
+    <div className="mx-20 my-12 border border-[#c1c0c0] h-full">
       <div className="overflow-x-auto h-[80vh]">
-        <table className="table ">
+        <table className="table text-white">
           {/* head */}
-          <thead>
+          <thead className="text-white">
             <tr>
               <th>Index</th>
               <th>name</th>

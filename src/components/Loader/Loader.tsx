@@ -3,7 +3,7 @@ import ContentLoader from "react-content-loader";
 import "./Loader.css";
 const Loader = (props) => {
   return (
-    <div className="p-16">
+    <div className="p-16 laoder">
       <ContentLoader
         width={1500}
         height={400}

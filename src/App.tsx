@@ -16,7 +16,7 @@ import { useContext } from "react";
 import { NewContext } from "./contextApi/ContextApi";
 import AddServices from "./pages/Dashboard/addServices/AddServices";
 import ShowServices from "./pages/Dashboard/showServices/ShowServices";
-import { Loader } from "./components";
+import { Header, Loader } from "./components";
 
 const ProtectedRoutes = ({ children }) => {
   const { user, loader } = useContext(NewContext);
@@ -34,12 +34,13 @@ const ProtectedRoutes = ({ children }) => {
       />
     );
   }
+
   return children;
 };
 
 const App: React.FC = () => {
   return (
-    <>
+    <div className="relative ml-10">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/" element={<Main />}>
@@ -50,20 +51,24 @@ const App: React.FC = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoutes>
-                <Dashboard />
-              </ProtectedRoutes>
-            }
-          >
-            <Route path="/dashboard" element={<ShowServices />} />
-            <Route path="/dashboard/addServices" element={<AddServices />} />
-          </Route>
+        </Route>
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoutes>
+              <Dashboard />
+            </ProtectedRoutes>
+          }
+        >
+          <Route path="/dashboard" element={<ShowServices />} />
+          <Route path="/dashboard/addServices" element={<AddServices />} />
         </Route>
       </Routes>
-    </>
+
+      <div className="fixed top-0 left-0">
+        <Header />
+      </div>
+    </div>
   );
 };
 

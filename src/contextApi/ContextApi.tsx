@@ -125,8 +125,12 @@ const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      if (currentUser) {
+        setUser(currentUser);
+      }
+
       setLoader(false);
+      console.log(currentUser, loader);
     });
     return () => unsubscribe();
   }, []);

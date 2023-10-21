@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 const About: React.FC = () => {
   return (
     <>
-      <div className="grid mashruf">
+      <div className="grid maximum-width">
         <div className=" text-white text-center h-screen py-10 relative pt-20 overflow-y-scroll p-5">
           <div className="md:w-5/6 mx-auto">
             <h1 className="md:text-xl text-sm leading-[24px] md:text-center md:leading-[36px] relative z-10">
@@ -120,10 +120,13 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
-
       <div className="bg-[#530303] lg:block hidden relative">
-        <Particles />
-        <ShortURL />
+        <div className="absolute">
+          <Particles />
+        </div>
+        <div className="right-sidebar h-screen relative">
+          <ShortURL />
+        </div>
       </div>
     </>
   );

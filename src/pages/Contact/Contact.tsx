@@ -7,9 +7,9 @@ import { FiCornerDownRight } from "react-icons/fi";
 import "./Contact.css";
 const Contact: React.FC = () => {
   return (
-    <div>
-      <div className="grid lg:grid-cols-2 grid-cols-1">
-        <div className="about-section text-white h-screen py-10 relative pt-20 overflow-y-scroll p-5">
+    <>
+      <div className="maximum-width">
+        <div className=" text-white h-screen py-10 relative pt-20 overflow-y-scroll p-5">
           <div className="absolute top-3 w-full left-0">
             <h1 className=" md:text-[90px] text-[60px] text-[#3d3d3d3b] uppercase font-bold text-center">
               Contact
@@ -42,7 +42,7 @@ const Contact: React.FC = () => {
                     Mail
                   </h2>
                   <p className="text-[15px] leading-[26px]">
-                    mashruf125@gmail.com
+                    maximum-width125@gmail.com
                   </p>
                 </div>
               </div>
@@ -115,18 +115,18 @@ const Contact: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="bg-red-900">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1723.490032541873!2d90.40549325538518!3d23.749229544486795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b974026b32c9%3A0x2de9d527670657b2!2s274%20mogh%20bazar!5e0!3m2!1sen!2sbd!4v1691302440597!5m2!1sen!2sbd"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            loading="lazy"
-            className="googleImg"
-          ></iframe>
-        </div>
       </div>
-    </div>
+      <div className="bg-red-900">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1723.490032541873!2d90.40549325538518!3d23.749229544486795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b974026b32c9%3A0x2de9d527670657b2!2s274%20mogh%20bazar!5e0!3m2!1sen!2sbd!4v1691302440597!5m2!1sen!2sbd"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          loading="lazy"
+          className="googleImg"
+        ></iframe>
+      </div>
+    </>
   );
 };
 

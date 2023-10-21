@@ -1,10 +1,10 @@
-import { Particles } from "../../components";
+import { CheckDomain, Particles } from "../../components";
 import "./Resume.css";
 const Resume: React.FC = () => {
   return (
-    <div>
-      <div className="grid lg:grid-cols-3 ">
-        <div className="about-section text-white h-screen py-10 relative pt-20 overflow-y-scroll p-5 col-span-2">
+    <>
+      <div className="maximum-width">
+        <div className="text-white h-screen py-10 relative pt-20 overflow-y-scroll p-5 col-span-2">
           <div className="absolute top-3 w-full left-0">
             <h1 className=" md:text-[90px] text-[60px] text-[#3d3d3d3b] uppercase font-bold text-center">
               Resume
@@ -165,11 +165,16 @@ const Resume: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="bg-red-900 lg:block hidden">
+      </div>
+      <div className="bg-[#530303] lg:block hidden relative">
+        <div className="absolute">
           <Particles />
         </div>
+        <div className="right-sidebar h-screen relative">
+          <CheckDomain />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
