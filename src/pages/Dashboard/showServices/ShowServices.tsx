@@ -2,7 +2,7 @@ import { deleteDoc, doc } from "firebase/firestore";
 import React, { useContext, useState } from "react";
 import { db } from "../../../firebase/Firebase.config.js";
 import { NewContext } from "../../../contextApi/ContextApi.jsx";
-import { Modal, Pagination } from "../../../components/index.js";
+import { DeleteModal, Modal, Pagination } from "../../../components/index.js";
 import "./showServices.css";
 type ReceieveDataT = {
   id: number | string;
@@ -20,6 +20,11 @@ const ShowServices = () => {
   const [showModal, setShowModal] = useState(true);
   const [selectedData, setSelectedData] = useState<ReceieveDataT | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const setDataToDeleteOnClick = (data: ReceieveDataT | null) => {
+    setSelectedData(data);
+    document.getElementById("my_modal_1").showModal();
+  };
   const deleteIt = async (id: string | number) => {
     try {
       const docRef = doc(db, "projects", id as string);
@@ -43,8 +48,8 @@ const ShowServices = () => {
   const currentData = receieveData.slice(startIndex, endIndex);
 
   return (
-    <div className="col-span-2 p-16 pt-12">
-      <div className="overflow-x-auto h-[80vh]  border border-gray-400">
+    <div className="mx-20 my-12 border border-gray-600 h-full">
+      <div className="overflow-x-auto h-[80vh]">
         <table className="table ">
           {/* head */}
           <thead>
@@ -79,7 +84,7 @@ const ShowServices = () => {
                     <td>
                       <button
                         className="btn btn-ghost btn-xs"
-                        onClick={() => void deleteIt(data.id)}
+                        onClick={() => setDataToDeleteOnClick(data)}
                       >
                         delete
                       </button>
@@ -98,7 +103,6 @@ const ShowServices = () => {
           </tbody>
         </table>
       </div>
-
       {/* Page numbers */}
       <Pagination
         totalPages={Math.ceil(receieveData.length / dataPaginationRate)}
@@ -113,6 +117,7 @@ const ShowServices = () => {
           showModal={showModal}
         />
       )}
+      <DeleteModal deleteIt={deleteIt} selectedData={selectedData} />
     </div>
   );
 };

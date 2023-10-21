@@ -1,42 +1,45 @@
 import React, { useContext } from "react";
+import "./DeleteModal.css";
 
-const DeleteModal: React.FC = () => {
+type ReceieveDataT = {
+  id: number | string;
+  servicename: string;
+  selectedCategory: string;
+  message: string;
+  technology: { label: string; value: string }[];
+  sitelink: string;
+  image: string | null;
+};
+
+type DeleteModalProps = {
+  deleteIt: (id: string | number) => void;
+  selectedData: ReceieveDataT | null;
+};
+
+const DeleteModal: React.FC<DeleteModalProps> = ({
+  deleteIt,
+  selectedData,
+}) => {
   return (
-    <div>
-      {/* You can open the modal using ID.showModal() method */}
-
-      <dialog id="my_modal_4" className="modal">
-        <form method="dialog" className="modal-box">
-          <div className="form-control ">
-            <input
-              type="text"
-              placeholder="Service Name"
-              className="input bg-transparent border-0 border-b border-b-[#747474] rounded-none pl-0 pb-5 pr-2 text-sm"
-              name="servicename"
-              required
-            />
-          </div>
-          <div className="form-control ">
-            <input
-              type="text"
-              placeholder="project live link"
-              className="input bg-transparent border-0 border-b border-b-[#747474] rounded-none pl-0 pb-5 pr-2 text-sm"
-              name="sitelink"
-              required
-            />
-          </div>
-          <div className="form-control">
-            <textarea
-              className="textarea bg-transparent border-0 border-b border-b-[#747474] rounded-none pl-0 pb-5 pr-2 text-sm "
-              placeholder="Description...."
-              name="message"
-              required
-            ></textarea>
-          </div>
-          <div className="form-control mt-6 items-baseline flex-row btn-custom">
-            <input type="submit" value="Submit" className="btn btn-primary" />
-          </div>
-        </form>
+    <div className="deleteModal">
+      <dialog id="my_modal_1" className="modal">
+        <div className="modal-box">
+          <form method="dialog" className="flex items-center flex-col">
+            <h4 className="text-center">
+              Do you really want to delete{" "}
+              <span className="text-red-400">{selectedData?.servicename}</span>
+            </h4>
+            <div className="mt-5">
+              <button className="btn">Close</button>
+              <button
+                className="btn ml-3"
+                onClick={() => deleteIt(selectedData.id)}
+              >
+                Confirm
+              </button>
+            </div>
+          </form>
+        </div>
       </dialog>
     </div>
   );

@@ -1,0 +1,9 @@
+.rmsc .dropdown-heading .dropdown-heading-value {
+  overflow: visible !important;
+}
+button.clear-selected-button {
+  min-width: 20px;
+}
+.rmsc .dropdown-container {
+  border: none !important;
+}

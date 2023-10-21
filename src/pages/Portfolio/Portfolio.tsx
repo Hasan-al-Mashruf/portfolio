@@ -23,6 +23,7 @@ const Portfolio: React.FC = () => {
     "All",
     "Html Templates",
     "Wordpress",
+    "Javascript",
     "React",
     "Mern stack",
   ];
@@ -33,9 +34,9 @@ const Portfolio: React.FC = () => {
   };
 
   return (
-    <div>
-      <div className="grid lg:grid-cols-3 grid-col-1">
-        <div className="about-section text-white h-screen py-10 relative pt-20 overflow-y-scroll p-5 lg:col-span-2">
+    <>
+      <div className="grid mashruf">
+        <div className=" text-white h-screen py-10 relative pt-20 overflow-y-scroll p-5 lg:col-span-2">
           <div className="absolute top-3 w-full left-0">
             <h1 className=" md:text-[90px] text-[56px] text-[#3d3d3d3b] uppercase font-bold text-center">
               Portfolio
@@ -82,12 +83,13 @@ const Portfolio: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="bg-red-900 lg:block hidden relative">
-          <Particles />
-          <CheckDomain />
-        </div>
       </div>
-    </div>
+
+      <div className="bg-[#530303] lg:block hidden relative">
+        <Particles />
+        <CheckDomain />
+      </div>
+    </>
   );
 };
 

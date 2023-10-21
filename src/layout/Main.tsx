@@ -1,15 +1,16 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "../components";
+import "./Main.css";
 
 const Main: React.FC = () => {
   return (
     <div className="flex">
-      {/* left-side */}
       <Header />
 
-      {/* right-side */}
-      <div className="flex-1 relative">
-        <Outlet />
+      <div className="flex-1 relative ">
+        <div className="about-section">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

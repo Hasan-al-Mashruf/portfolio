@@ -1,9 +1,9 @@
 .card-image {
   transition: all 0.9s linear 0.1s;
 }
-.card:hover .card-image {
+/* .card:hover .card-image {
   top: -400px;
-}
+} */
 
 .card:hover::after {
   top: 0;

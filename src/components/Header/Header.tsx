@@ -4,6 +4,8 @@ import { GoPerson } from "react-icons/go";
 import { AiOutlineSetting } from "react-icons/ai";
 import { BsEye } from "react-icons/bs";
 import { TiContacts } from "react-icons/Ti";
+import { BiSolidDashboard } from "react-icons/bi";
+import { BsDatabaseAdd } from "react-icons/bs";
 import {
   BiLogoFacebook,
   BiLogoGithub,
@@ -11,8 +13,11 @@ import {
   BiLogoDiscordAlt,
 } from "react-icons/bi";
 import "./Header.css";
+import { NewContext } from "../../contextApi/ContextApi";
+import { useContext } from "react";
 
 const Header = () => {
+  const { user } = useContext(NewContext);
   return (
     <div>
       <div className="navbar bg-black lg:h-screen min-h-full flex-col justify-between items-start p-0 w-12 border-r border-r-[#00fff735] ">
@@ -42,6 +47,17 @@ const Header = () => {
               <NavLink to="/contact">
                 <TiContacts />
               </NavLink>
+
+              {user && (
+                <>
+                  <NavLink to="/dashboard">
+                    <BiSolidDashboard />
+                  </NavLink>
+                  <NavLink to="/dashboard/addServices">
+                    <BsDatabaseAdd />
+                  </NavLink>
+                </>
+              )}
             </li>
           </ul>
         </div>
