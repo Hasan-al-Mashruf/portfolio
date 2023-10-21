@@ -29,7 +29,7 @@ const ProtectedRoutes = ({ children }) => {
     return (
       <Navigate
         to="/signup"
-        state={{ from: window.location.pathname }}
+        state={{ from: { pathname: location.pathname } }}
         replace
       />
     );

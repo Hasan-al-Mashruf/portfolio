@@ -9,8 +9,10 @@ interface SigninFormData {
 }
 
 const Signin = () => {
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const { loginUser, user } = useContext(NewContext);
-  // const navigate = useNavigate();
   const findaUser = (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
@@ -19,8 +21,13 @@ const Signin = () => {
       email: (form.email as HTMLInputElement)?.value,
       password: (form.password as HTMLInputElement)?.value,
     };
-    loginUser(formData.email, formData.password);
-    console.log(user);
+    loginUser(formData.email, formData.password).then((userCredential: any) => {
+      const user = userCredential.user;
+      if (user) {
+        navigate(from, { replace: true });
+      }
+      // ...
+    });
   };
 
   return (

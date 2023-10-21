@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { NewContext } from "../../contextApi/ContextApi";
-import { Link } from "react-router-dom";
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../../firebase/Firebase.config";
 interface SignupFormData {
   userName: string;
   email: string;
@@ -9,7 +10,11 @@ interface SignupFormData {
 }
 
 const Signup = () => {
-  const { createUser } = useContext(NewContext);
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
+  const { createUser, user } = useContext(NewContext);
   const findaUser = (e: React.FormEvent) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
@@ -19,8 +24,25 @@ const Signup = () => {
       password: (form.password as HTMLInputElement)?.value,
     };
 
-    createUser(formData.userName, formData.email, formData.password);
-    form.reset();
+    createUser(formData.email, formData.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        updateProfile(auth.currentUser, {
+          displayName: formData.userName,
+        })
+          .then(() => {
+            navigate(from, { replace: true });
+          })
+          .catch((error) => {});
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error);
+        // ..
+      });
   };
   return (
     <div className="w-full h-screen flex items-center flex-col justify-center bg-[#f0ffff] relative">

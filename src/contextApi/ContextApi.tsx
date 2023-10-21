@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState, ReactNode } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db, auth } from "../firebase/Firebase.config";
 import {
+  User,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -17,14 +18,18 @@ type ReceieveDataT = {
   image: string | null;
 };
 
+interface UserCredential {
+  user: User;
+}
+
 interface AuthInfo {
   user: string;
   receieveData: ReceieveDataT[];
   setLoader: React.Dispatch<React.SetStateAction<boolean>>;
   loader: boolean;
   setCurrentCat: React.Dispatch<React.SetStateAction<string>>;
-  createUser: (name: string, email: string, password: string) => Promise<void>;
-  loginUser: (email: string, password: string) => void;
+  createUser: (email: string, password: string) => Promise<UserCredential>;
+  loginUser: (email: string, password: string) => Promise<UserCredential>;
   contentLoader: boolean;
   setContentLoader: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -78,32 +83,9 @@ const ContextApi: React.FC<ContextApiProps> = ({ children }) => {
     void getData();
   }, [contentLoader, currentCat]);
 
-  const createUser = (name: string, email: string, password: string) => {
+  const createUser = (email: string, password: string) => {
     setLoader(true);
-    return createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        updateProfile(auth.currentUser, {
-          displayName: name,
-        })
-          .then(() => {
-            // Profile updated!
-            // ...
-          })
-          .catch((error) => {
-            // An error occurred
-            // ...
-          });
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(error);
-        // ..
-      });
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const loginUser = (email: string, password: string) => {

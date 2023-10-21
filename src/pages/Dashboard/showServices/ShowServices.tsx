@@ -23,7 +23,7 @@ const ShowServices = () => {
 
   const setDataToDeleteOnClick = (data: ReceieveDataT | null) => {
     setSelectedData(data);
-    document.getElementById("my_modal_1").showModal();
+    // document.getElementById("my_modal_1").showModal();
   };
   const deleteIt = async (id: string | number) => {
     try {
